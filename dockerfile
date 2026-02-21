@@ -8,9 +8,10 @@ COPY src ./src
 RUN mvn -q -DskipTests package
 FROM eclipse-temurin:17-jre
 WORKDIR /app
-RUN useradd -ms /bin/bash appuser
+RUN groupadd -g 1000 appgroup && \
+    useradd -u 1000 -g appgroup -ms /bin/bash appuser
 COPY --from=builder /app/target/*.jar app.jar
 RUN chown appuser:appuser app.jar
-USER appuser
+USER 1000
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
