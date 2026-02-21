@@ -16,7 +16,7 @@ public class DemoApplication {
 class HelloController {
   @GetMapping("/")
   public String home() {
-    return "Hello from Project-1 GitOps CI/CD 🚀" PROJECT 1 SUCCESS MACHA;
+    return "Hello from Project-1 GitOps CI/CD 🚀 PROJECT 1 SUCCESS MACHA";
   }
 
   @GetMapping("/health")
