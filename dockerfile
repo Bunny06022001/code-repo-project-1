@@ -11,7 +11,7 @@ WORKDIR /app
 RUN groupadd -g 1003 appgroup && \
     useradd -u 1003 -g appgroup -ms /bin/bash appuser
 COPY --from=builder /app/target/*.jar app.jar
-RUN chown appuser:appuser app.jar
+RUN chown -R appuser:appgroup app.jar
 USER 1003
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
